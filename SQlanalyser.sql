@@ -120,6 +120,7 @@ EXPLAIN SELECT * FROM transactions_no_keys_sorted WHERE amount = 5000;
 alter table transactions_no_keys_sorted
 add constraint amount_key primary key (amount);
 create index amount_idx on transactions_no_keys_sorted(amount);
+drop table transactions_no_keys_sorted;
 
 create TABLE transactions_no_keys_sorted as
 select
@@ -226,7 +227,7 @@ from transactions;
 CREATE INDEX idx_device_os ON transactions(device_os);
 
 -- 3. Проверяем новый запрос
-EXPLAIN  ANALYZE SELECT * FROM transactions WHERE device_os = 'iOS';
+EXPLAIN ANALYZE SELECT * FROM transactions WHERE device_os = 'iOS';
 
 SHOW INDEX FROM users;
 
